@@ -102,7 +102,6 @@
           })
           
           this.floorList = data.message
-          console.log(this.floorList)
         } catch (err) {
           uni.showMsg(err.message)
         }
