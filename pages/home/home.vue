@@ -1,5 +1,8 @@
 <template>
 	<view>
+    <view class="search-box">
+      <my-search @click="goSearch"></my-search>
+    </view>
 		<swiper :indicator-dots="true"
             :autoplay="true"
             indicator-color="#efefef"
@@ -67,7 +70,13 @@
         floorList: []
 			};
 		},
+
     methods: {
+      goSearch() {
+        uni.navigateTo({
+          url: '/subPkg/search/search'
+        })
+      },
       async getSwiperList() {
         try {
           const { data } = await uni.$http.get('/api/public/v1/home/swiperdata')
@@ -132,6 +141,12 @@ swiper {
   overflow: hidden;
 }
 
+.search-box {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 .swiper-item {
   image {
     width: 100vw;
@@ -151,12 +166,13 @@ swiper {
 
 .floor-title {
   display: flex;
+  margin-bottom: 16rpx;
   width: 100vw;
   height: 60rpx;
 }
 
 .floor-item {
-  margin-top: 50rpx;
+  margin-top: 60rpx;
 }
 
 .right-img-box {

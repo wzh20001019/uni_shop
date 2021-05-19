@@ -1,5 +1,6 @@
 <template>
   <view>
+    <my-search @click="goSearch"></my-search>
     <view class="category-container">
       <!-- 左侧滚动区 -->
       <scroll-view scroll-y="true" class="left-scroll-view" :style="{height: wh + 'px'}">
@@ -44,6 +45,12 @@
     },
 
     methods: {
+      goSearch() {
+        uni.navigateTo({
+          url: '/subPkg/search/search'
+        })
+      },
+      
       async getCategoryList() {
         try {
           const {
@@ -77,7 +84,7 @@
       // 获取当前系统的信息
       const sysInfo = uni.getSystemInfoSync()
       // 为 wh 窗口可用高度动态赋值
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight - 50
 
       this.getCategoryList()
     }
