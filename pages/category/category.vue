@@ -73,9 +73,8 @@
       },
       
       goGoodsList(item) {
-        console.log(item.cat_pid)
         uni.navigateTo({
-          url: '/subPkg/goods_list/goods_list?cid=' + item.cat_pid
+          url: '/subPkg/goods_list/goods_list?query=' + item.cat_name
         })
       }
     },

@@ -78,7 +78,9 @@
       "path": "goods_list/goods_list",
       "style": {
         // "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
+        "onReachBottomDistance": 100,
+        "enablePullDownRefresh": true,         //开启下拉刷新
+        "backgroundColor":"#F8F8F8"
       }
 
     }, {
