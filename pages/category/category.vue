@@ -74,7 +74,7 @@
       
       goGoodsList(item) {
         uni.navigateTo({
-          url: '/subPkg/goods_list/goods_list?query=' + item.cat_name
+          url: '/subPkg/goods_list/goods_list?query=' + item.cat_id
         })
       }
     },

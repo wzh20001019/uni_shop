@@ -67,7 +67,7 @@
     },
     
     onLoad(options) {
-      this.queryObj.query = options.query || ''
+      this.queryObj.query = options.query || ''    //传递过来没有此数据 让它为空
       this.queryObj.cid = options.cid || ''
       
       this.getGoodsList()         //页面加载获取列表数据
