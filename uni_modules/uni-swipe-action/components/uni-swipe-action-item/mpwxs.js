@@ -105,11 +105,11 @@ export default {
 			// #ifdef H5
 			if(!isPC()) return
 			// #endif
-			this.$emit('click', {
-				content: item,
-				index,
-				position
-			})
+			// this.$emit('click', {
+			// 	content: item,
+			// 	index,
+			// 	position
+			// })
 		},
 		getButtonSize() {
 			const views = uni.createSelectorQuery().in(this)
