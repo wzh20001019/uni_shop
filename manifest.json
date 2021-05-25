@@ -1,7 +1,7 @@
 {
     "name" : "uni_app01",
-    "appid" : "",
-    "description" : "",
+    "appid" : "__UNI__68DD0BC",
+    "description" : "测试-开发小程序",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -53,7 +53,7 @@
         "setting" : {
             "urlCheck" : true,
             "postcss" : false,
-            "checkSiteMap": false
+            "checkSiteMap" : false
         },
         "usingComponents" : true,
         "permission" : {}

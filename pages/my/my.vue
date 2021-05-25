@@ -1,11 +1,10 @@
 <template>
-  <view>
-    <uni-swipe-action>
-      <!-- 基础用法 -->
-      <uni-swipe-action-item :right-options="options" @click="onClick">
-        <view>基础使用</view>
-      </uni-swipe-action-item>
-    </uni-swipe-action>
+  <view class="my-container">
+    <!-- 未登录状态 -->
+    <my-login v-if="!token"></my-login>
+    
+    <!-- 登录状态 -->
+    <my-userinfo v-else></my-userinfo>
   </view>
 </template>
 
@@ -13,30 +12,20 @@
   // 导入自己封装的 mixin 模块
   import badgeMix from '@/mixins/tabbar-badge.js'
 
+  import { mapState } from 'vuex'
   export default {
     mixins: [badgeMix],
+    computed: {
+      ...mapState('m_user', ['token'])
+    },
+ 
     data() {
       return {
-        options: [{
-          text: '取消',
-          style: {
-            backgroundColor: '#007aff'
-          }
-        }, {
-          text: '确认',
-          style: {
-            backgroundColor: '#dd524d'
-          }
-        }]
+
       }
     },
     methods: {
-      onClick(e) {
-        console.log('点击了' + (e.position === 'left' ? '左侧' : '右侧') + e.content.text + '按钮')
-      },
-      swipeChange(e, index) {
-        console.log('当前状态：' + open + '，下标：' + index)
-      }
+      
     },
 
     onLoad() {}
@@ -44,5 +33,8 @@
 </script>
 
 <style lang="scss">
-
+page,
+.my-container {
+  height: 100%;
+}
 </style>

@@ -11,12 +11,12 @@
     </view>
 
     <!-- 结算按钮 -->
-    <view class="btn-settle">结算({{checkedCount}})</view>
+    <view class="btn-settle" @click="settlement">结算({{checkedCount}})</view>
   </view>
 </template>
 
 <script>
-  import { mapMutations, mapGetters } from 'vuex'
+  import { mapState, mapMutations, mapGetters } from 'vuex'
   export default {
     name: "my-settle",
     data() {
@@ -26,7 +26,9 @@
     },
     
     computed: {
+      ...mapState('m_user', ['token']),
       ...mapGetters('m_cart', ['checkedCount', 'total', 'checkedGoodsAmount']),
+      ...mapGetters('m_user', ['addstr']),
       
       isFullCheckout() {
         return this.total === this.checkedCount
@@ -39,6 +41,42 @@
       //全选按钮的  全选/反选
       changeAllState() {
         this.updateAllGoodsState(!this.isFullCheckout)
+      },
+      
+      //点击结算按钮
+      settlement() {
+        if (!this.checkedCount) return uni.showMsg('请选择商品')
+        if (!this.addstr) return uni.showMsg('请填写地址信息')
+        if (!this.token) {
+          uni.showMsg('请先登录', 1000)
+          return setTimeout(() => {
+            uni.switchTab({
+              url: '/pages/my/my'
+            })
+          }, 1500)
+        }
+        
+        uni.requestPayment({
+          timeStamp: '1621944328573',
+          nonceStr: 'wbcdwzh123',
+          package: '123',
+          signType: 'MD5',
+          paySign: 'wzh',
+          success (res) {
+            // console.log('success')
+            // console.log(res)
+          },
+          fail (res) {
+            if (res && res.errMsg === 'requestPayment:fail no permission') {
+              uni.showToast({
+                title: '支付功能为开发',
+                duration: 1000,
+                mask: true,       //遮罩层
+                icon: 'error'
+              })
+            }
+          }
+        })
       }
     }
   }
