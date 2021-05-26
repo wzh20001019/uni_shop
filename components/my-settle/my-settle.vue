@@ -56,27 +56,34 @@
           }, 1500)
         }
         
-        uni.requestPayment({
-          timeStamp: '1621944328573',
-          nonceStr: 'wbcdwzh123',
-          package: '123',
-          signType: 'MD5',
-          paySign: 'wzh',
-          success (res) {
-            // console.log('success')
-            // console.log(res)
-          },
-          fail (res) {
-            if (res && res.errMsg === 'requestPayment:fail no permission') {
-              uni.showToast({
-                title: '支付功能为开发',
-                duration: 1000,
-                mask: true,       //遮罩层
-                icon: 'error'
-              })
-            }
-          }
+        uni.showToast({
+          title: '支付功能为开发',
+          duration: 1000,
+          mask: true,       //遮罩层
+          icon: 'error'
         })
+        
+        // uni.requestPayment({
+        //   timeStamp: '1621944328573',
+        //   nonceStr: 'wbcdwzh123',
+        //   package: '123',
+        //   signType: 'MD5',
+        //   paySign: 'wzh',
+        //   success (res) {
+        //     // console.log('success')
+        //     // console.log(res)
+        //   },
+        //   fail (res) {
+        //     if (res && res.errMsg === 'requestPayment:fail no permission') {
+        //       uni.showToast({
+        //         title: '支付功能为开发',
+        //         duration: 1000,
+        //         mask: true,       //遮罩层
+        //         icon: 'error'
+        //       })
+        //     }
+        //   }
+        // })
       }
     }
   }
